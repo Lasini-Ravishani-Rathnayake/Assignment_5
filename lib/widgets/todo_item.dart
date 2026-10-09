@@ -21,7 +21,25 @@ class TodoItem extends StatelessWidget {
         color: const Color.fromARGB(255, 2, 40, 71),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Placeholder(fallbackHeight: 60), // Remove this Placeholder
+      child: ListTile(
+        onTap: () => onclick(),
+        leading: Icon(
+          todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          color: Colors.white,
+        ),
+        title: Text(
+          todo.title ?? '',
+          style: TextStyle(
+            color: Colors.white,
+            decoration: todo.isDone ? TextDecoration.lineThrough : null,
+            decorationColor: Colors.white,
+          ),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete, color: Colors.red),
+          onPressed: () => onDelete(),
+        ),
+      ), // Remove this Placeholder
       /*
       TODO 1: Replace the Placeholder above with a ListTile.
       
